@@ -12,8 +12,7 @@ const Tweet = use('App/Models/Tweet')
 
 class TweetController {
 
-  async index () 
-  {
+  async ind
     const tweets = await Tweet.query().with('user', builder => {
       builder.select(['id', 'username', 'email', 'password'])
     }).fetch()
@@ -25,7 +24,7 @@ class TweetController {
   {
     const data = request.only(['content'])
     const tweet = await Tweet.create({user_id: auth.user.id, ...data})
-    
+
     return tweet
   }
 
